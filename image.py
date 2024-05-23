@@ -1,13 +1,9 @@
 import os
 from urllib import parse
-for i in range(len(image_urls)):
-    image_url = image_urls[i]
-    url = parse.urlparse(image_url)
-    name, ext = os.path.splitext(url.path)
-    image_byte = Request(image_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'})
-    f = open(f'cat{i}.{ext}', 'wb')
-    f.write(urlopen(image_byte).read())
-    f.close()
+from  urllib.request import Request, urlopen
+from selenium.webdriver.common.by import By
+import time
+from selenium import webdriver
 
 def crawl_and_save_image(keyword, pages):
     image_urls = []
